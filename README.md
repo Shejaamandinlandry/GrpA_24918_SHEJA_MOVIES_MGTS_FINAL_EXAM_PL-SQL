@@ -154,6 +154,7 @@ Payment for each ticket is stored individually with method and timestamp.
 Tickets can't be issued for the same seat in a show.
 RELATED IMAGE
 
+
 ==============================================================================
 Phase IV: Database Creation and Configuration
  Objective:
