@@ -103,6 +103,8 @@ Enables reporting: Generates real-time dashboards for management (total tickets 
 MIS Relevance:
 This process improves the quality of information by integrating booking, payments, and reporting. It provides timely insights for theater managers and streamlines the ticketing workflow, thus improving operational efficiency and customer satisfaction.
 IMAGE THAT SHOW IT CLEARY
+![image](https://github.com/user-attachments/assets/0937dd50-6f60-48b1-bdfe-815a001a0365)
+
 ===============================================================================================================================================================================
 
 Phase III: Logical Model Design
