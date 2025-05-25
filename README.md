@@ -154,6 +154,7 @@ Payment for each ticket is stored individually with method and timestamp.
 Tickets can't be issued for the same seat in a show.
 RELATED IMAGE
 
+![image](https://github.com/user-attachments/assets/922c503d-039d-44e1-8fb6-70ae120a6741)
 
 ==============================================================================
 Phase IV: Database Creation and Configuration
@@ -168,10 +169,20 @@ Password: 123
 
 Step 2: Create the Database in Oracle (XE)
 I use the following script( SQL Developer):
+![image](https://github.com/user-attachments/assets/65b5f427-8a94-4cec-a2bb-c04266647cb2)
+
 
 🧭 Step 3: Oracle Enterprise Manager (OEM)
 Oracle XE comes with OEM (EM Express) which can be accessed at:
 https://localhost:5500/em
+![image](https://github.com/user-attachments/assets/380b882e-b26b-4bd4-b89c-7e111af7913f)
+
+![image](https://github.com/user-attachments/assets/9a26115a-fb52-4ab6-a014-f44c8d31d011)
+![image](https://github.com/user-attachments/assets/90bd6e77-62e6-4949-b652-252ca082bb1f)
+![image](https://github.com/user-attachments/assets/523d9566-2a2a-4456-bc51-3217d78f3256)
+![image](https://github.com/user-attachments/assets/984eae1a-c22d-4f63-84a6-d766660fc0fd)
+![image](https://github.com/user-attachments/assets/67a82771-e290-47b5-ab90-478764d1a122)
+
 
 =================================================================================
 
@@ -244,6 +255,11 @@ CREATE TABLE staff (
 
 
 TABLE CREATED SUCCESSFULLY SCREENSHOTS
+![image](https://github.com/user-attachments/assets/3c9c175f-29be-4077-82a9-80c1883514d8)
+![image](https://github.com/user-attachments/assets/77485036-3362-4952-b69a-3509cad12f40)
+![image](https://github.com/user-attachments/assets/113f76e7-e2df-4e4b-84c6-de0809c63d09)
+![image](https://github.com/user-attachments/assets/412b3a58-59a3-4923-88e2-4e9704bc8505)
+
 
 
 
@@ -300,6 +316,13 @@ VALUES (2, 5500, 'Cash');
 DATA INSERTED SUCCESSFULLY SCREENSHOTS
 
 
+![image](https://github.com/user-attachments/assets/71ca3215-6323-432a-a22c-28abb5e84662)
+![image](https://github.com/user-attachments/assets/bc08c0ac-d7d8-451e-9c9c-26008c4594ba)
+![image](https://github.com/user-attachments/assets/c7990c91-ed95-4953-b8a9-f2f2bb5ad3ea)
+![image](https://github.com/user-attachments/assets/de683bb9-7037-4964-9916-058d51d5ff50)
+![image](https://github.com/user-attachments/assets/98bdd431-aec8-4dc9-bb3e-4627c44e071d)
+![image](https://github.com/user-attachments/assets/358741d1-7b3d-445d-a542-cac56480e0ad)
+
 
 ==========================================================================================
 
@@ -333,6 +356,7 @@ BEGIN
     END LOOP;
 END;
 /
+![image](https://github.com/user-attachments/assets/2c782453-d7de-4419-992a-cd8822e8aab1)
 
 
 3. Function to Calculate Total Revenue for a Movie
@@ -355,6 +379,7 @@ EXCEPTION
 END;
 /
 
+![image](https://github.com/user-attachments/assets/799d7667-3ff8-46cf-b8be-ced723bdf332)
 
 
 4. Cursor Example: Loop Over Customers
@@ -369,6 +394,7 @@ BEGIN
 END;
 /
 
+![image](https://github.com/user-attachments/assets/04ff5ffc-6a2a-4984-a44d-c935633edec6)
 
 5. Error Handling Example
 
@@ -380,6 +406,7 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('Error inserting ticket: ' || SQLERRM);
 END;
 /
+![image](https://github.com/user-attachments/assets/0de703a6-7d33-4ffe-9a2d-21d79abde411)
 
 6. Create a Package for Show Analytics
 
@@ -389,6 +416,7 @@ CREATE OR REPLACE PACKAGE show_analytics AS
 END show_analytics;
 /
 
+![image](https://github.com/user-attachments/assets/f1b36f26-b70f-4d5f-9822-55410007b7f0)
 
 
 CREATE OR REPLACE PACKAGE BODY show_analytics AS
@@ -406,6 +434,7 @@ CREATE OR REPLACE PACKAGE BODY show_analytics AS
         END LOOP;
     END;
 
+![image](https://github.com/user-attachments/assets/a268348a-3c64-4ee2-8291-5dddd764aaa7)
 
 
     FUNCTION revenue(movie_id NUMBER) RETURN NUMBER IS
@@ -424,6 +453,7 @@ CREATE OR REPLACE PACKAGE BODY show_analytics AS
     END;
 END show_analytics;
 /
+![image](https://github.com/user-attachments/assets/76d1ca8a-63be-4969-816d-081ac3106c5c)
 
 =================================================================================
 
@@ -465,6 +495,7 @@ CREATE TABLE ticket_audit (
 );
 
 
+![image](https://github.com/user-attachments/assets/8ba0192e-a754-46fd-8e0f-83ef57ed2406)
 
 
  Step 3: Create the Blocking and Logging Trigger
@@ -513,6 +544,7 @@ BEFORE INSERT OR UPDATE OR DELETE ON ticketFOR EACH ROWDECLARE
     END IF;END;/
 
 
+![image](https://github.com/user-attachments/assets/c32f919f-d1a4-4e5a-bea5-6fd110d0867b)
 
  Step 4: Testing and Validation
 Positive Case
@@ -521,6 +553,7 @@ sql
 CopyEdit
 INSERT INTO ticket (show_id, customer_id, seat_number, price)VALUES (1, 1, 'B1', 5000);
 
+![image](https://github.com/user-attachments/assets/9720e292-6227-4b00-be13-ed15d898ba82)
 
 Expected Result: ✅ Success, and an entry is added in ticket_audit with status allowed.
 
@@ -536,6 +569,7 @@ To confirm the auditing works correctly:
 sql
 CopyEdit
 SELECT * FROM ticket_audit ORDER BY action_time DESC;
+![image](https://github.com/user-attachments/assets/f0f7057d-e50e-4652-910a-7b5c501fdcb8)
 
 
 
